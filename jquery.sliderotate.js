@@ -1,48 +1,68 @@
 /*
  * THE JQUERY SLIDEROTATE PLUGIN
  *
- * (c) Mirko Westermeier (mail@memowe.de)
- * and Daniel Kirsch (danielkirsch@gmx.de)
- *
- * This plugin is free software. Public repository:
- * http://git.github.com/memowe/sliderotate
+ * smoothly switches list items endless. stops on mouse hover.
  *
  * USAGE:
  * 
- *  $('#div_with_ol').slideRotate({
- *      stepDuration:   1000
- *      stepPause:      2000
- *  });
+ *      $('#div_with_list').slideRotate({
+ *          stepDuration:   1000
+ *          stepPause:      2000
+ *      });
  *
- *  See example.html
+ * See example.html
  *
+ * (c) Mirko Westermeier (mail@memowe.de)
+ * and Daniel Kirsch (danielkirsch@gmx.de)
+ *
+ * This plugin is free software.
+ * Public repository: http://github.com/memowe/sliderotate
  */
 
+(function($){
 
-    var stepDuration    = 1000;
-    var stepPause       = stepDuration + 1000;
-    var shiftWidth      = '-' + $('#witchcraft').width() + 'px';
+    jQuery.fn.slideRotate = function (options) {
 
-    // prepare first step
-    $('#witchcraft li:last').insertBefore($('#witchcraft li:first'));
-    $('#witchcraft ol').css({ marginLeft: shiftWidth });
+        settings = jQuery.extend({
+            stepDuration:   1000,
+            stepPause:      2000
+        }, options);
 
-    // whooosh!
-    $('#witchcraft ol').hide().fadeIn(stepDuration);
+        settings.stepPause += settings.stepDuration;
 
-    // rotate && animate
-    function step() {
-        $('#witchcraft li:first').insertAfter($('#witchcraft li:last'));
-        $('#witchcraft ol')
-            .css({ marginLeft: '0' })
-            .animate({ marginLeft: shiftWidth }, stepDuration);
+        return this.each(function(){
+            
+            var outer       = $(this);
+            var inner       = outer.find('ul, ol');
+            var shiftWidth  = '-' + outer.width() + 'px';
+            
+            // prepare first step
+            inner.find('li:last').insertBefore(inner.find('li:first'));
+            inner.css({ marginLeft: shiftWidth });
+
+            // rotate && animate
+            function step() {
+                inner.find('li:first').insertAfter(inner.find('li:last'));
+                inner
+                    .css({ marginLeft: '0' })
+                    .animate(
+                        { marginLeft: shiftWidth },
+                        settings.stepDuration
+                    );
+            }
+
+            // do it yourself
+            var interval = setInterval( step, settings.stepPause );
+
+            // user interaction
+            outer.mouseover(function(){
+                clearInterval( interval );
+            }).mouseout(function(){
+                interval = setInterval( step, settings.stepPause );
+            });
+
+        });
     }
+})(jQuery);
 
-    // automatism-shism
-    var interval = setInterval( step, stepPause );
-    $('#witchcraft').mouseover(function(){
-        clearInterval( interval );
-    }).mouseout(function(){
-        interval = setInterval( step, stepPause );
-    });
-
+    
