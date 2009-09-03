@@ -1,22 +1,42 @@
 /*
- * THE JQUERY SLIDEROTATE PLUGIN
- *
- * Smoothly switches list items endlessly. Stops on mouse hover.
- *
- * USAGE:
- * 
- *      $('#div_with_list').slideRotate({
- *          stepDuration:   1000
- *          stepPause:      2000
- *      });
- *
- * See example.html
- *
- * (c) Mirko Westermeier (mail@memowe.de)
- * and Daniel Kirsch (danielkirsch@gmx.de)
- *
- * This plugin is free software.
- * Public repository: http://github.com/memowe/sliderotate
+ 
+THE JQUERY SLIDEROTATE PLUGIN
+
+Smoothly switches list items endlessly. Stops on mouse hover.
+
+USAGE:
+
+     $('#div_with_list').slideRotate({
+         stepDuration:   1000
+         stepPause:      2000
+     });
+
+SEE ALSO
+
+* the example html file example.html
+* the public SlideRotate repository: http://github.com/memowe/sliderotate
+
+Copyright (c) 2009 Mirko Westermeier (mail@memowe.de)
+                   and Daniel Kirsch (danielkirsch@gmx.de)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
  */
 
 (function($){
