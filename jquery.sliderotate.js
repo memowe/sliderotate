@@ -1,7 +1,7 @@
 /*
  * THE JQUERY SLIDEROTATE PLUGIN
  *
- * smoothly switches list items endless. stops on mouse hover.
+ * Smoothly switches list items endlessly. Stops on mouse hover.
  *
  * USAGE:
  * 
