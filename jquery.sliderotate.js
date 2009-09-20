@@ -75,9 +75,9 @@ SOFTWARE.
             var interval = setInterval( step, settings.stepPause );
 
             // user interaction
-            outer.mouseover(function(){
+            outer.hover(function(){
                 clearInterval( interval );
-            }).mouseout(function(){
+            }, function(){
                 interval = setInterval( step, settings.stepPause );
             });
 
